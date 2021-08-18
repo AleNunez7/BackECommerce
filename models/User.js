@@ -9,12 +9,7 @@ const userSchema = new Schema({
   username: String,
   email: String,
   password: String,
-  description: String, // Biografia
-  profilePicture: String,
-  tweetsLike: [{ type: Schema.Types.ObjectId, ref: "Tweet" }],
-  tweetsList: [{ type: Schema.Types.ObjectId, ref: "Tweet" }],
-  followingList: [{ type: Schema.Types.ObjectId, ref: "User" }], // Seguidores
-  followerList: [{ type: Schema.Types.ObjectId, ref: "User" }], // Seguidos
+  role: String,
 });
 
 userSchema.pre("validate", async function save(next) {

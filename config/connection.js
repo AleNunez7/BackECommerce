@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 mongoose.connect(
-  `mongodb+srv://root:root@ha.zwnjg.mongodb.net/sprint3_twitter_ha`, // Base de datos en servidor(Agustin);
+  `mongodb+srv://joaquin:1234@shohack.zb8b8.mongodb.net/ShoHack`,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,

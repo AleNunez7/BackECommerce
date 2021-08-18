@@ -4,7 +4,6 @@ const app = express();
 const routes = require("./routes/index");
 const port = 8000;
 const mongoose = require("./config/connection"); // Se conecta el mongo
-const dbInitialSetup = require("./dbInitialSetup");
 const cors = require("cors");
 app.use(cors());
 
