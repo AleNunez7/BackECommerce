@@ -1,4 +1,4 @@
-const Product = require("../models/Product");
+const { Product } = require("../models/Product");
 
 async function create(req, res) {
   if (
@@ -11,7 +11,7 @@ async function create(req, res) {
     res.status(404).json({ error: "Debe completar todos los campos" });
   } else if (
     await Product.findOne({
-      $or: [{ name: req.body.name }],
+      name: req.body.name,
     })
   ) {
     res.status(404).json({ error: "Este producto ya existe" });
