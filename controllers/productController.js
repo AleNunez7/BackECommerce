@@ -30,7 +30,17 @@ async function destroy(req, res) {
   res.json({ message: "el producto fue eliminado correctamente" });
 }
 
+async function update(req, res) {
+  const updateProduct = await Product.findByIdAndUpdate(
+    req.params.id,
+    req.body
+  );
+  await updateProduct.save();
+  res.json({ data: updateProduct });
+}
+
 module.exports = {
   create,
   destroy,
+  update,
 };
