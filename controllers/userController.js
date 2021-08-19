@@ -23,7 +23,7 @@ async function createRegister(req, res) {
   }
 }
 
-/* async function tokens(req, res) {
+async function tokens(req, res) {
   const { username, password } = req.body;
   const user = await User.findOne({ username: username });
 
@@ -37,8 +37,9 @@ async function createRegister(req, res) {
     res.status(404);
     res.json({ message: "credenciales incorrectas" });
   }
-} */
+}
 
 module.exports = {
   createRegister,
+  tokens,
 };

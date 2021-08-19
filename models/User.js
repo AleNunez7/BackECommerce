@@ -10,6 +10,7 @@ const userSchema = new Schema({
   email: String,
   password: String,
   role: String,
+  shoppingList: [],
 });
 
 userSchema.pre("validate", async function save(next) {
