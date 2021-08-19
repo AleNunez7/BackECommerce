@@ -25,7 +25,7 @@ async function create(req, res) {
 async function destroy(req, res) {
   const productDelete = await Product.findById(req.params.id);
   if (productDelete) {
-    await Product.findByIdRemove(req.params.id);
+    await Product.findByIdAndDelete(req.params.id);
   }
   res.json({ message: "el producto fue eliminado correctamente" });
 }
