@@ -18,7 +18,7 @@ async function create(req, res) {
   } else {
     const product = new Product(req.body);
     await product.save();
-    res.json({ data: product });
+    res.json(product);
   }
 }
 
@@ -31,16 +31,19 @@ async function destroy(req, res) {
 }
 
 async function update(req, res) {
-  const updateProduct = await Product.findByIdAndUpdate(
-    req.params.id,
-    req.body
-  );
-  await updateProduct.save();
+  const product = await Product.findByIdAndUpdate(req.params.id, req.body);
+  await product.save();
   res.json({ message: "Producto modificado con exito" });
+}
+
+async function show(req, res) {
+  const product = await Product.findById(req.params.id);
+  res.json(product);
 }
 
 module.exports = {
   create,
   destroy,
   update,
+  show,
 };

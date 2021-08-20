@@ -6,7 +6,8 @@ const checkJwt = require("express-jwt");
 
 publicRouter.get("/", pagesController.showHome);
 publicRouter.post("/users", userController.createRegister);
-/* publicRouter.post("/tokens", userController.tokens);
+publicRouter.post("/tokens", userController.tokens);
+/* 
 publicRouter.get("/products", pagesController.showProducts);
 publicRouter.get("/product", pagesController.showProduct);
 publicRouter.get("/about-us", pagesController.showAboutUs);
