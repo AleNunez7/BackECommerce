@@ -36,7 +36,7 @@ async function update(req, res) {
     req.body
   );
   await updateProduct.save();
-  res.json({ data: updateProduct });
+  res.json({ message: "Producto modificado con exito" });
 }
 
 module.exports = {
