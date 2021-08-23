@@ -6,7 +6,7 @@ const checkJwt = require("express-jwt");
 /* productRouter.use(
   checkJwt({ secret: process.env.TOKEN_STRING_SECRETO, algorithms: ["HS256"] })
 ); */
-productRouter.get("/:id", productController.show);
+productRouter.get("/:id", productController.showProduct);
 productRouter.patch("/:id", productController.update);
 productRouter.post("/", productController.create);
 productRouter.delete("/:id", productController.destroy);

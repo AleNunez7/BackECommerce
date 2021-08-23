@@ -36,7 +36,7 @@ async function update(req, res) {
   res.json({ message: "Producto modificado con exito" });
 }
 
-async function show(req, res) {
+async function showProduct(req, res) {
   const product = await Product.findById(req.params.id);
   res.json(product);
 }
@@ -45,5 +45,5 @@ module.exports = {
   create,
   destroy,
   update,
-  show,
+  showProduct,
 };
