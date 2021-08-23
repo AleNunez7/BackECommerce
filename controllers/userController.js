@@ -39,7 +39,23 @@ async function tokens(req, res) {
   }
 }
 
+async function destroy(req, res) {
+  const userDelete = await User.findById(req.params.id);
+  if (userDelete) {
+    await User.findByIdAndDelete(req.params.id);
+  }
+  res.json({ message: "el usuario fue eliminado correctamente" });
+}
+
+async function update(req, res) {
+  const user = await User.findByIdAndUpdate(req.params.id, req.body);
+  await user.save();
+  res.json({ message: "Usuario modificado con exito" });
+}
+
 module.exports = {
   createRegister,
   tokens,
+  destroy,
+  update,
 };
