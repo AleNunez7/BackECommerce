@@ -1,6 +1,7 @@
 const { Product } = require("../models/Product");
 
 async function create(req, res) {
+  console.log(req.body);
   if (
     req.body.name === "" ||
     req.body.description === "" ||
