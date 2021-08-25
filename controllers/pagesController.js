@@ -7,12 +7,6 @@ async function showHome(req, res) {
   res.json({ products, users });
 }
 
-async function showProducts(req, res) {
-  const products = await Product.find();
-  res.json({ products });
-}
-
 module.exports = {
   showHome,
-  showProducts,
 };
