@@ -4,9 +4,9 @@ const userController = require("../controllers/userController");
 const checkJwt = require("express-jwt");
 
 userRoutes.post("/tokens", userController.tokens);
-userRoutes.use(
+/* userRoutes.use(
   checkJwt({ secret: process.env.TOKEN_STRING_SECRETO, algorithms: ["HS256"] })
-);
+); */
 userRoutes.post("/users", userController.createRegister);
 userRoutes.patch("/users/:id", userController.update);
 userRoutes.delete("/users/:id", userController.destroy);
