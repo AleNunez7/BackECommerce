@@ -7,6 +7,7 @@ userRoutes.post("/tokens", userController.tokens);
 /* userRoutes.use(
   checkJwt({ secret: process.env.TOKEN_STRING_SECRETO, algorithms: ["HS256"] })
 ); */
+userRoutes.get("/users/:id", userController.showUser);
 userRoutes.post("/users", userController.createRegister);
 userRoutes.patch("/users/:id", userController.update);
 userRoutes.delete("/users/:id", userController.destroy);

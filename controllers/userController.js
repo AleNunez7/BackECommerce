@@ -41,7 +41,8 @@ async function createRegister(req, res) {
 }
 
 async function update(req, res) {
-  const user = await User.findOneAndUpdate({ id: req.params._id }, req.body);
+  console.log(req.params);
+  const user = await User.findOneAndUpdate({ _id: req.params.id }, req.body);
   await user.save();
   res.json({ message: "Usuario modificado con exito" });
 }
@@ -62,9 +63,16 @@ async function addToList(req, res) {
   res.json("El producto se guardo correctamente");
 }
 
+async function showUser(req, res) {
+  const user = await User.findById(req.params.id);
+  console.log(user);
+  res.json(user);
+}
+
 module.exports = {
   createRegister,
   tokens,
   destroy,
   update,
+  showUser,
 };
