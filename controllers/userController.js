@@ -41,7 +41,7 @@ async function createRegister(req, res) {
 }
 
 async function update(req, res) {
-  const user = await User.findByIdAndUpdate(req.params.id, req.body);
+  const user = await User.findOneAndUpdate({ id: req.params._id }, req.body);
   await user.save();
   res.json({ message: "Usuario modificado con exito" });
 }

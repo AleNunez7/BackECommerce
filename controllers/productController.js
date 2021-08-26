@@ -32,6 +32,7 @@ async function destroy(req, res) {
 }
 
 async function update(req, res) {
+  console.log("update");
   const product = await Product.findByIdAndUpdate(req.params.id, req.body);
   await product.save();
   res.json({ message: "Producto modificado con exito" });
@@ -39,6 +40,7 @@ async function update(req, res) {
 
 async function showProduct(req, res) {
   const product = await Product.findById(req.params.id);
+  console.log(product);
   res.json(product);
 }
 
