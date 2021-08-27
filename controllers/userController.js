@@ -1,5 +1,6 @@
 const { User, validPassword } = require("../models/User");
 const { Product } = require("../models/Product");
+const { Role } = require("../models/Role");
 const jwt = require("jsonwebtoken");
 
 async function tokens(req, res) {
@@ -18,6 +19,17 @@ async function tokens(req, res) {
   }
 }
 
+async function newRole(req, res) {
+  const role = new Role(req.body);
+  await role.save();
+  res.json(role);
+}
+
+async function showRole(req, res) {
+  const role = await Role.find();
+  res.json(role);
+}
+
 async function createRegister(req, res) {
   if (
     req.body.firstname === "" ||
@@ -34,6 +46,7 @@ async function createRegister(req, res) {
   ) {
     res.status(404).json({ error: "Este usuario ya existe" });
   } else {
+    req.body.role = "6128f108d447f42a783a7783";
     const user = new User(req.body);
     await user.save();
     res.json({ data: user });
@@ -41,7 +54,6 @@ async function createRegister(req, res) {
 }
 
 async function update(req, res) {
-  console.log(req.params);
   const user = await User.findOneAndUpdate({ _id: req.params.id }, req.body);
   await user.save();
   res.json({ message: "Usuario modificado con exito" });
@@ -75,4 +87,6 @@ module.exports = {
   destroy,
   update,
   showUser,
+  newRole,
+  showRole,
 };

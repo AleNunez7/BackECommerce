@@ -3,7 +3,7 @@ const { Product } = require("../models/Product");
 
 async function showHome(req, res) {
   const products = await Product.find();
-  const users = await User.find();
+  const users = await User.find().populate("role");
   res.json({ products, users });
 }
 

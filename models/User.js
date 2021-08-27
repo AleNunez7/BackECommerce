@@ -9,7 +9,7 @@ const userSchema = new Schema({
   username: String,
   email: String,
   password: String,
-  role: { type: String, default: "customer" },
+  role: { type: Schema.Types.ObjectId, ref: "Role" },
   shoppingList: [],
 });
 
