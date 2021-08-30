@@ -13,8 +13,7 @@ async function tokens(req, res) {
     user.password = null;
     res.json({ user, token });
   } else {
-    res.status(404);
-    res.json({ message: "credenciales incorrectas" });
+    res.status(401).json({ message: "credenciales incorrectas" });
   }
 }
 
