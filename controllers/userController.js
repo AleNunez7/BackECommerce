@@ -1,6 +1,5 @@
 const { User, validPassword } = require("../models/User");
 const { Product } = require("../models/Product");
-const { Role } = require("../models/Role");
 const jwt = require("jsonwebtoken");
 
 async function tokens(req, res) {
@@ -17,17 +16,6 @@ async function tokens(req, res) {
     res.status(404);
     res.json({ message: "credenciales incorrectas" });
   }
-}
-
-async function newRole(req, res) {
-  const role = new Role(req.body);
-  await role.save();
-  res.json(role);
-}
-
-async function showRole(req, res) {
-  const role = await Role.find();
-  res.json(role);
 }
 
 async function createRegister(req, res) {
@@ -87,6 +75,4 @@ module.exports = {
   destroy,
   update,
   showUser,
-  newRole,
-  showRole,
 };
