@@ -6,6 +6,6 @@ const roleRoutes = require("./roleRoutes");
 module.exports = (app) => {
   app.use(publicRoutes);
   app.use(userRoutes);
-  app.use(roleRoutes);
+  app.use("/role", roleRoutes);
   app.use("/products", productRoutes);
 };
