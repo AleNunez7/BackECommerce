@@ -64,7 +64,6 @@ async function addToList(req, res) {
 
 async function showUser(req, res) {
   const user = await User.findById(req.params.id);
-  console.log(user);
   res.json(user);
 }
 
