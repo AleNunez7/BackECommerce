@@ -4,14 +4,24 @@ const { User } = require("../models/User");
 
 async function createOrder(req, res) {
   const user = await User.findById(req.body.user._id);
-  const order = new Order({
+  console.log(req.body);
+  const item = req.body.cart;
+
+  for (let i = 0; i < item.length; i++) {
+    let product = await Product.findById(item[i]._id);
+    product.stock = Number(product.stock) - item[i].quantity;
+
+    await product.save();
+  }
+
+  const order = await new Order({
     user: user.username,
     orderList: req.body.cart,
     totalPrice: req.body.total,
     state: "comprado",
   });
   await order.save();
-  res.json({ message: "Orden creada correctamente" });
+  res.json({ message: "Orden creada correctamente", order });
 }
 
 async function showOrder(req, res) {
