@@ -1,10 +1,11 @@
 const { Order } = require("../models/Order");
 const { Product } = require("../models/Product");
-let counter = 0;
+const { User } = require("../models/User");
+
 async function createOrder(req, res) {
+  const user = await User.findById(req.body.user._id);
   const order = new Order({
-    orderNumber: counter++,
-    user: req.body.user._id,
+    user: user.username,
     orderList: req.body.cart,
     totalPrice: req.body.total,
     state: "comprado",
