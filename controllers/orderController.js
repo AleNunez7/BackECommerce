@@ -1,6 +1,9 @@
 const { Order } = require("../models/Order");
 const { Product } = require("../models/Product");
 const { User } = require("../models/User");
+const moment = require("moment");
+
+moment.locale("es");
 
 async function createOrder(req, res) {
   const user = await User.findById(req.body.user._id);
@@ -19,6 +22,7 @@ async function createOrder(req, res) {
     orderList: req.body.cart,
     totalPrice: req.body.total,
     state: "comprado",
+    date: moment().format("L"),
   });
   await order.save();
   res.json({ message: "Orden creada correctamente", order });
