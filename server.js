@@ -7,8 +7,6 @@ const mongoose = require("./config/connection"); // Se conecta el mongo
 const cors = require("cors");
 app.use(cors());
 
-//dbInitialSetup();
-// Middlewares integrados:
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
