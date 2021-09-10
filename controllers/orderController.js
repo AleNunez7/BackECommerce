@@ -33,7 +33,14 @@ async function showOrder(req, res) {
   res.json(orders);
 }
 
+async function showOrderById(req, res) {
+  const user = await User.findById(req.params.id);
+  const orders = await Order.find({ user: user.username });
+  res.json(orders);
+}
+
 module.exports = {
   createOrder,
   showOrder,
+  showOrderById,
 };
